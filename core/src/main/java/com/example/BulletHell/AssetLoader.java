@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AssetLoader implements Screen {
 
     private BulletHell game;
@@ -36,6 +39,7 @@ public class AssetLoader implements Screen {
         game.spriteBatch.end();
     }
 
+
     @Override
     public void show() {
         AssetManager mgr = game.manager;
@@ -46,6 +50,7 @@ public class AssetLoader implements Screen {
         mgr.load("joystick/l.png", Texture.class);
         mgr.load("joystick/r.png", Texture.class);
         mgr.load("joystick/shoot.png", Texture.class);
+        mgr.finishLoading();
     }
 
     @Override
