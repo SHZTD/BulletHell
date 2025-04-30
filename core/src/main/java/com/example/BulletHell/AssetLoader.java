@@ -4,22 +4,16 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class AssetLoader implements Screen {
 
-    BulletHell game;
-    float loadProgress;
+    private BulletHell game;
+    private float loadProgress;
 
-    AssetLoader(BulletHell game){
+    public AssetLoader(BulletHell game){
         this.game = game;
-        AssetManager manager = game.manager;
-
-        // carga todo;
-        manager.load("first_screen/bullet_hell.png", Texture.class);
-        manager.load("first_screen/planet.png", Texture.class);
-
-        loadProgress = 0.f;
     }
 
     @Override
@@ -32,12 +26,26 @@ public class AssetLoader implements Screen {
         }
 
         game.spriteBatch.begin();
+        game.bf.getData().setScale(4f);
+        game.bf.draw(
+            game.spriteBatch,
+            "Loading: " + (int)(loadProgress * 100) + "%",
+            200,
+            400
+        );
         game.spriteBatch.end();
     }
 
     @Override
     public void show() {
-
+        AssetManager mgr = game.manager;
+        mgr.load("first_screen/bullet_hell.png", Texture.class);
+        mgr.load("first_screen/planet.png", Texture.class);
+        mgr.load("joystick/d.png", Texture.class);
+        mgr.load("joystick/u.png", Texture.class);
+        mgr.load("joystick/l.png", Texture.class);
+        mgr.load("joystick/r.png", Texture.class);
+        mgr.load("joystick/shoot.png", Texture.class);
     }
 
     @Override

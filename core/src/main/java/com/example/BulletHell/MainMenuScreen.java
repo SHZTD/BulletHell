@@ -12,53 +12,60 @@ import com.badlogic.gdx.utils.ScreenUtils;
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class MainMenuScreen implements Screen {
     BulletHell game;
-    private SpriteBatch batch;
     private Texture image;
 
     public MainMenuScreen(BulletHell game) {
         this.game = game;
-        this.batch = game.spriteBatch;
         this.image = game.manager.get("first_screen/bullet_hell.png", Texture.class);
     }
 
     @Override
     public void show() {
-
+        // Set the camera's projection mode
+        game.camera.setToOrtho(false, 480, 800); // This could be any resolution you want
     }
 
     @Override
     public void render(float delta) {
+        // Clear the screen
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
-        batch.begin();
-        TextureRegion tx = new TextureRegion();
-        tx.flip(false, true);
-        batch.draw(image, 0, 0, 480, 800);
-        batch.end();
+
+        // Update the camera
+        game.camera.update();
+
+        game.spriteBatch.setProjectionMatrix(game.camera.combined);
+
+        float scaleWidth = game.camera.viewportWidth / image.getWidth();
+        float scaleHeight = game.camera.viewportHeight / image.getHeight();
+
+        float scale = Math.min(scaleWidth, scaleHeight);
+
+        float scaledWidth = image.getWidth() * scale;
+        float scaledHeight = image.getHeight() * scale;
+
+        game.spriteBatch.begin();
+        game.spriteBatch.draw(image, 0, 0, scaledWidth, scaledHeight);
+        game.spriteBatch.end();
     }
 
     @Override
     public void resize(int width, int height) {
-
+        game.camera.viewportWidth = width;
+        game.camera.viewportHeight = height;
+        game.camera.update();
     }
 
     @Override
-    public void pause() {
-
-    }
+    public void hide() {}
 
     @Override
-    public void resume() {
-
-    }
+    public void pause() {}
 
     @Override
-    public void hide() {
-
-    }
+    public void resume() {}
 
     @Override
     public void dispose() {
-        batch.dispose();
         image.dispose();
     }
 }
