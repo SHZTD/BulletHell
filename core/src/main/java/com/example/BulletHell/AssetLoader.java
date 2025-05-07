@@ -33,8 +33,8 @@ public class AssetLoader implements Screen {
         game.bf.draw(
             game.spriteBatch,
             "Loading: " + (int)(loadProgress * 100) + "%",
-            200,
-            400
+            50,
+            50
         );
         game.spriteBatch.end();
     }
@@ -43,8 +43,12 @@ public class AssetLoader implements Screen {
     @Override
     public void show() {
         AssetManager mgr = game.manager;
+        // first screen
         mgr.load("first_screen/bullet_hell.png", Texture.class);
         mgr.load("first_screen/planet.png", Texture.class);
+        mgr.load("first_screen/play.png", Texture.class);
+
+        // joystick
         mgr.load("joystick/d.png", Texture.class);
         mgr.load("joystick/u.png", Texture.class);
         mgr.load("joystick/l.png", Texture.class);
