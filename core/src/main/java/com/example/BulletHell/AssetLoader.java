@@ -17,6 +17,25 @@ public class AssetLoader implements Screen {
 
     public AssetLoader(BulletHell game){
         this.game = game;
+
+        AssetManager mgr = game.manager;
+        // first screen
+        mgr.load("first_screen/bullet_hell.png", Texture.class);
+        mgr.load("first_screen/planet.png", Texture.class);
+        mgr.load("first_screen/play.png", Texture.class);
+
+        // joystick
+        mgr.load("joystick/d.png", Texture.class);
+        mgr.load("joystick/u.png", Texture.class);
+        mgr.load("joystick/l.png", Texture.class);
+        mgr.load("joystick/r.png", Texture.class);
+        mgr.load("joystick/shoot.png", Texture.class);
+
+        for (int i = 1; i <= 4; i++) {
+            mgr.load("ship/" + i + ".png", Texture.class);
+        }
+
+        loadProgress = 0;
     }
 
     @Override
@@ -36,25 +55,18 @@ public class AssetLoader implements Screen {
             50,
             50
         );
+
         game.spriteBatch.end();
+        if (game.manager.update()) {
+            game.setScreen(new MainMenuScreen(game));
+            this.dispose();
+        }
     }
 
 
     @Override
     public void show() {
-        AssetManager mgr = game.manager;
-        // first screen
-        mgr.load("first_screen/bullet_hell.png", Texture.class);
-        mgr.load("first_screen/planet.png", Texture.class);
-        mgr.load("first_screen/play.png", Texture.class);
 
-        // joystick
-        mgr.load("joystick/d.png", Texture.class);
-        mgr.load("joystick/u.png", Texture.class);
-        mgr.load("joystick/l.png", Texture.class);
-        mgr.load("joystick/r.png", Texture.class);
-        mgr.load("joystick/shoot.png", Texture.class);
-        mgr.finishLoading();
     }
 
     @Override

@@ -1,0 +1,49 @@
+{
+  "buttons" : [
+    {
+      x: 0,
+      y: 0,
+      width: 80,
+      height: 80,
+      action: Down
+      image_on: "joystick/d.png",
+      image_off: "joystick/d.png"
+    },
+    {
+      x: 20,
+      y: 80,
+      width: 80,
+      height: 80,
+      action: Up,
+      image_on: "joystick/u.png",
+      image_off: "joystick/u.png"
+    },
+    {
+      x: 40,
+      y: 160,
+      width: 80,
+      height: 80,
+      action: Left,
+      image_on: "joystick/l.png",
+      image_off: "joystick/l.png"
+    },
+    {
+      x: 60,
+      y: 240,
+      width: 80,
+      height: 80,
+      action: Right,
+      image_on: "joystick/r.png",
+      image_off: "joystick/r.png"
+    },
+    {
+      x: 80,
+      y: 320,
+      width: 80,
+      height: 80,
+      action: Shoot,
+      image_on: "joystick/shoot.png",
+      image_off: "joystick/shoot.png"
+    }
+  ]
+}
