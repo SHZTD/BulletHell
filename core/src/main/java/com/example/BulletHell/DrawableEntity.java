@@ -21,9 +21,4 @@ class DrawableEntity {
         this.x += dx;
         this.y += dy;
     }
-
-    public void setPos(float dx, float dy) {
-        this.x = dx;
-        this.y = dy;
-    }
 }

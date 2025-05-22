@@ -45,10 +45,6 @@ public class Bullet extends DrawableEntity {
         return currentTime >= entityLifeTime;
     }
 
-    public boolean isOutOfBounds(float minX, float maxX, float minY, float maxY) {
-        return x < minX || x > maxX || y < minY || y > maxY;
-    }
-
     private void updateDirectionVectors() {
         float radians = direccion * MathUtils.degreesToRadians;
         dirX = MathUtils.cos(radians);

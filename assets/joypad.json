@@ -5,12 +5,12 @@
       y: 0,
       width: 80,
       height: 80,
-      action: Down
+      action: Down,
       image_on: "joystick/d.png",
       image_off: "joystick/d.png"
     },
     {
-      x: 20,
+      x: 0,
       y: 80,
       width: 80,
       height: 80,
@@ -19,7 +19,7 @@
       image_off: "joystick/u.png"
     },
     {
-      x: 40,
+      x: 0,
       y: 160,
       width: 80,
       height: 80,
@@ -28,7 +28,7 @@
       image_off: "joystick/l.png"
     },
     {
-      x: 60,
+      x: 0,
       y: 240,
       width: 80,
       height: 80,
@@ -37,7 +37,7 @@
       image_off: "joystick/r.png"
     },
     {
-      x: 80,
+      x: 0,
       y: 320,
       width: 80,
       height: 80,

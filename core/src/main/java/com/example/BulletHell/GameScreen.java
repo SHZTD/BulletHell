@@ -4,6 +4,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class GameScreen implements Screen {
@@ -27,9 +28,7 @@ public class GameScreen implements Screen {
         player.setJoypad(joypad);
         stage.addActor(player);
 
-        Viewport vp = new Viewport(){};
-        vp.setCamera(game.camera);
-
+        Viewport vp = new ScreenViewport(game.camera);
         stage.setViewport(vp);
     }
 
@@ -52,11 +51,14 @@ public class GameScreen implements Screen {
         joypad.render(game.spriteBatch, game.textBatch);
         game.textBatch.begin();
         game.textBatch.end();
+
+        gameLogic(delta);
     }
 
     // gamelogic
     void gameLogic(float delta) {
-
+        stage.act(delta);
+        //System.out.println("render");
     }
 
     @Override

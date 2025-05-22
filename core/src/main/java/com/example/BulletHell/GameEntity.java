@@ -21,6 +21,10 @@ public class GameEntity extends Actor
         moveBy(delta*speed.x, delta* speed.y);
     }
 
+    public boolean isOutOfBounds(float minX, float maxX, float minY, float maxY) {
+        return speed.x < minX || speed.x > maxX || speed.y < minY || speed.y > maxY;
+    }
+
     public Vector2 getSpeed() {
         return speed;
     }
