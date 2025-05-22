@@ -33,14 +33,14 @@ public class Player extends GameEntity {
         if (joypad.isPressed("Left")) {
             speed.x -= BASE_MOVEMENT;
             currentFrame = manager.get("ship/2.png", Texture.class);
-            if (isOutOfBounds(0, 480, 0, 800)) speed.x = 0;
+            if (isOutOfBounds(0, 480 - currentFrame.getWidth(), 0, 800)) speed.x = 0;
             System.out.println("moved left");
         }
 
         if (joypad.isPressed("Up")) {
             speed.y += BASE_MOVEMENT;
             currentFrame = manager.get("ship/3.png", Texture.class);
-            if (isOutOfBounds(0, 480, 0, 800)) speed.y = 0;
+            if (isOutOfBounds(0, 480 - currentFrame.getHeight(), 0, 800)) speed.y = 0;
             System.out.println("moved up");
         }
 
