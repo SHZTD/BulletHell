@@ -7,16 +7,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class AssetLoader implements Screen {
 
-    private BulletHell game;
-    private float loadProgress;
+    private final BulletHell game;
+    private final BitmapFont font;
 
-    public AssetLoader(BulletHell game){
+    public AssetLoader(BulletHell game) {
         this.game = game;
+        this.font = new BitmapFont();
+        font.getData().setScale(4f);
 
         AssetManager mgr = game.manager;
         // first screen
@@ -31,66 +30,42 @@ public class AssetLoader implements Screen {
         mgr.load("joystick/r.png", Texture.class);
         mgr.load("joystick/shoot.png", Texture.class);
 
+        // enemy
+        mgr.load("ship/enemy.png", Texture.class);
+
         for (int i = 1; i <= 4; i++) {
             mgr.load("ship/" + i + ".png", Texture.class);
         }
-
-        loadProgress = 0;
     }
 
     @Override
     public void render(float delta) {
         ScreenUtils.clear(Color.BLACK);
 
-        if(game.manager.update()) {
-            game.setScreen(new MainMenuScreen(game));
-            this.dispose();
-        }
+        float progress = game.manager.getProgress();
 
         game.spriteBatch.begin();
-        game.bf.getData().setScale(4f);
-        game.bf.draw(
+        font.draw(
             game.spriteBatch,
-            "Loading: " + (int)(loadProgress * 100) + "%",
+            "Loading: " + (int)(progress * 100) + "%",
             50,
-            50
+            60
         );
-
         game.spriteBatch.end();
+
         if (game.manager.update()) {
             game.setScreen(new MainMenuScreen(game));
-            this.dispose();
         }
-    }
-
-
-    @Override
-    public void show() {
-
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
     }
 
     @Override
     public void dispose() {
-
+        font.dispose();
     }
+
+    @Override public void show() {}
+    @Override public void resize(int width, int height) {}
+    @Override public void pause() {}
+    @Override public void resume() {}
+    @Override public void hide() {}
 }

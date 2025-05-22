@@ -12,7 +12,6 @@ public class GameScreen implements Screen {
     ButtonLayout joypad;
 
     Stage stage;
-
     Player player;
 
     public GameScreen(BulletHell game) {
@@ -30,6 +29,9 @@ public class GameScreen implements Screen {
 
         Viewport vp = new ScreenViewport(game.camera);
         stage.setViewport(vp);
+
+        // instancia el enemigo
+
     }
 
     @Override
