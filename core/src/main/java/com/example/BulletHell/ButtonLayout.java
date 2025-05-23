@@ -77,7 +77,6 @@ public class ButtonLayout implements InputProcessor {
 
         for(ButtonJson b : l.buttons)
         {
-            System.out.println("Cargando botón: " + b.image_on);
             addButton(b.x, b.y, b.width, b.height, b.action, b.text, b.image_on, b.image_off);
         }
     }

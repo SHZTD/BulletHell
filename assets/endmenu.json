@@ -1,0 +1,14 @@
+{
+  "buttons": [
+    {
+      x: 45,
+      y: 0,
+      width: 400,
+      height: 200,
+      action: Retry,
+      "text": " ",
+      "image_on": "first_screen/play.png",
+      "image_off": "first_screen/play.png"
+    }
+  ]
+}

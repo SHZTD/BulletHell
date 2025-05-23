@@ -40,7 +40,6 @@ public class MainMenuScreen implements Screen {
         mainMenu.render(game.spriteBatch, game.textBatch);
 
         if(mainMenu.consumeRelease("Start")) {
-            System.out.println("Im clicked!");
             game.setScreen(new GameScreen(game));
             this.dispose();
         }
@@ -60,6 +59,5 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void dispose() {
-        //image.dispose();
     }
 }

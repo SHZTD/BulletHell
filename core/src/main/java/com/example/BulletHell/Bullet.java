@@ -1,5 +1,6 @@
 package com.example.BulletHell;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.MathUtils;
 
 public class Bullet extends DrawableEntity {
@@ -12,6 +13,9 @@ public class Bullet extends DrawableEntity {
     private float entityLifeTime; // cuanto tiempo la entidad puede estar presente
     private float currentTime;
 
+    // hitbox
+    private Circle collisionCircle;
+
     public Bullet(Texture texture, float x, float y,
                   float direccion, float velocidad, float acceleracion,
                   float curva, float entityLifeTime) {
@@ -23,6 +27,17 @@ public class Bullet extends DrawableEntity {
         this.entityLifeTime = entityLifeTime;
         this.currentTime = 0;
         updateDirectionVectors();
+        this.collisionCircle = new Circle();
+    }
+
+    public Circle getCollisionCircle() {
+        float radius = Math.min(getWidth(), getHeight()) * 0.4f;
+        collisionCircle.set(
+            getX() + getWidth()/2,
+            getY() + getHeight()/2,
+            radius
+        );
+        return collisionCircle;
     }
 
     @Override

@@ -1,7 +1,10 @@
 package com.example.BulletHell;
 
+import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -18,9 +21,12 @@ public class AssetLoader implements Screen {
         font.getData().setScale(4f);
 
         AssetManager mgr = game.manager;
+
         // first screen
         mgr.load("first_screen/bullet_hell.png", Texture.class);
-        mgr.load("first_screen/planet.png", Texture.class);
+        mgr.load("first_screen/main_arena.png", Texture.class);
+        mgr.load("first_screen/game_over.png", Texture.class);
+        mgr.load("first_screen/you_win.png", Texture.class);
         mgr.load("first_screen/play.png", Texture.class);
 
         // joystick
@@ -28,11 +34,19 @@ public class AssetLoader implements Screen {
         mgr.load("joystick/u.png", Texture.class);
         mgr.load("joystick/l.png", Texture.class);
         mgr.load("joystick/r.png", Texture.class);
-        mgr.load("joystick/shoot.png", Texture.class);
 
         // enemy
         mgr.load("ship/enemy.png", Texture.class);
 
+        // bullets
+        mgr.load("bullets/long_bullet.png", Texture.class);
+        mgr.load("bullets/alien_bullet.png", Texture.class);
+
+        // audios
+        mgr.load("audio/bullet.mp3", Sound.class);
+        mgr.load("audio/loop.mp3", Music.class);
+
+        // ship
         for (int i = 1; i <= 4; i++) {
             mgr.load("ship/" + i + ".png", Texture.class);
         }
